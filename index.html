@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UAS Ganjil – Geografi Kelas XII</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#EEF6F3;--card:#fff;--ink:#12343B;--mute:#5C7A80;--line:#D3E2DE;--teal:#0B6E6E;--navy:#123C69;--ok:#2E9E6B;--doubt:#F2A900;--none:#DCE7E4;--bad:#E4572E;--oksoft:#E3F5EC;--badsoft:#FDE9E3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0C1C1F;--card:#152A2E;--ink:#E6F2EF;--mute:#9DB8BC;--line:#264248;--none:#2A4247;--oksoft:#12362A;--badsoft:#3B2018}}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif;min-height:100vh;-webkit-user-select:none;user-select:none}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;margin:0;line-height:1.15}
+.hide{display:none!important}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--doubt);outline-offset:2px}
+.btn{border:0;border-radius:12px;padding:12px 20px;font-weight:700;background:var(--teal);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.doubt{background:var(--doubt);color:#2b1d00}
+.btn.doubt.on{outline:3px solid var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+/* Login */
+#login{min-height:100vh;display:grid;place-items:center;padding:24px;background:
+ repeating-radial-gradient(circle at 15% 20%,transparent 0 26px,rgba(11,110,110,.10) 27px 28px),
+ linear-gradient(135deg,#0B6E6E 0%,#123C69 100%)}
+.panel{background:var(--card);border-radius:22px;max-width:880px;width:100%;display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.hero{background:linear-gradient(160deg,#FFC857,#F2A900);color:#2b1d00;padding:36px 30px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.hero h1{font-size:2.1rem;font-weight:800}
+.hero p{margin:0}
+.hero ul{margin:6px 0 0;padding-left:18px;font-size:.92rem}
+.form{padding:30px;display:grid;gap:12px}
+label{font-weight:700;font-size:.9rem;display:grid;gap:4px}
+input{font:inherit;padding:11px 13px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);-webkit-user-select:text;user-select:text}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tokenbox{background:var(--bg);border:2px dashed var(--teal);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tokenbox b{font:800 1.6rem 'Bricolage Grotesque',sans-serif;letter-spacing:.25em;color:var(--teal)}
+.tokenbox small{color:var(--mute)}
+.err{color:var(--bad);font-weight:700;min-height:1.4em;font-size:.9rem}
+/* Exam */
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:linear-gradient(90deg,var(--navy),var(--teal));color:#fff;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 20px}
+header.bar .who{font-weight:700;line-height:1.2}
+header.bar .who small{display:block;font-weight:400;opacity:.85}
+.timer{font:800 1.5rem 'Bricolage Grotesque',sans-serif;background:rgba(255,255,255,.16);padding:6px 16px;border-radius:12px;font-variant-numeric:tabular-nums}
+.timer.low{background:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.65}}
+@media (prefers-reduced-motion:reduce){.timer.low{animation:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 290px;gap:20px;align-items:start}
+.qcard,.side{background:var(--card);border-radius:18px;padding:24px;border:1px solid var(--line)}
+.qno{color:var(--teal);font-weight:700;margin-bottom:8px}
+.qtext{font-size:1.15rem;font-weight:500;margin-bottom:18px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:var(--bg);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:12px 14px}
+.opt:hover{border-color:var(--teal)}
+.opt .L{flex:0 0 32px;height:32px;border-radius:50%;background:var(--none);display:grid;place-items:center;font-weight:800}
+.opt.sel{border-color:var(--ok);background:var(--oksoft)}
+.opt.sel .L{background:var(--ok);color:#fff}
+.nav{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.nav .sp{flex:1}
+.side h3{font-size:1.05rem;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.n{aspect-ratio:1;border-radius:10px;border:2px solid transparent;background:var(--none);color:var(--ink);font-weight:700}
+.n.a{background:var(--ok);color:#fff}
+.n.d{background:var(--doubt);color:#2b1d00}
+.n.cur{border-color:var(--ink);box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--teal)}
+.legend{display:grid;gap:6px;margin:16px 0;font-size:.88rem}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:8px;vertical-align:-2px}
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(5,20,25,.8);display:grid;place-items:center;padding:20px;z-index:20}
+.mbox{background:var(--card);border-radius:20px;padding:28px;max-width:440px;width:100%;display:grid;gap:12px;text-align:center}
+.mbox .ic{font-size:2.6rem}
+.mbox.warn{border-top:8px solid var(--bad)}
+/* Result */
+#result{max-width:900px;margin:0 auto;padding:20px}
+.score{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;border-radius:22px;padding:28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.score .big{font:800 4.5rem/1 'Bricolage Grotesque',sans-serif}
+.score dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.score dt{opacity:.8}.score dd{margin:0;font-weight:700}
+.stats{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.stat b{font:800 1.6rem 'Bricolage Grotesque',sans-serif;display:block}
+.rev{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--bad);border-radius:14px;padding:16px 18px;margin-bottom:12px;-webkit-user-select:text;user-select:text}
+.rev.ok{border-left-color:var(--ok)}
+.rev h4{margin:0 0 8px;font-weight:500}
+.rev .ans{display:grid;gap:4px;font-size:.95rem}
+.tag{display:inline-block;font-weight:700;border-radius:6px;padding:1px 8px;margin-right:6px;font-size:.85rem}
+.tag.ok{background:var(--oksoft);color:var(--ok)}.tag.bad{background:var(--badsoft);color:var(--bad)}
+.pemb{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--bg);font-size:.93rem}
+@media (max-width:760px){.panel{grid-template-columns:1fr}.wrap{grid-template-columns:1fr;padding:12px}.row2{grid-template-columns:1fr}.side{order:-1}.grid{grid-template-columns:repeat(8,1fr)}header.bar .who small{display:none}}
+@media print{header,.nav,#printbtn{display:none}}
+</style>
+</head>
+<body>
+
+<section id="login">
+ <div class="panel">
+  <div class="hero">
+   <h1>Ujian Akhir Semester Ganjil</h1>
+   <p><b>Geografi Kelas XII</b><br>Interaksi Desa–Kota, Wilayah dan Perwilayahan</p>
+   <ul>
+    <li>40 soal pilihan ganda, waktu 90 menit</li>
+    <li>Urutan soal diacak untuk setiap siswa</li>
+    <li>Jangan pindah tab atau keluar dari layar penuh. Peringatan hanya diberikan satu kali; pelanggaran kedua menghentikan ujian.</li>
+   </ul>
+  </div>
+  <div class="form">
+   <label>Nama siswa<input id="fNama" autocomplete="off" placeholder="Nama lengkap"></label>
+   <div class="row2">
+    <label>Kelas<input id="fKelas" autocomplete="off" placeholder="XII IPS 1"></label>
+    <label>Nomor peserta didik<input id="fNo" autocomplete="off" placeholder="Nomor peserta"></label>
+   </div>
+   <label>Asal sekolah<input id="fSekolah" autocomplete="off" placeholder="Nama sekolah"></label>
+   <div class="tokenbox"><div><small>Token ujian hari ini</small><br><b id="tokenShow">------</b></div><button class="btn ghost" id="newToken" type="button">Buat baru</button></div>
+   <label>Masukkan token<input id="fToken" autocomplete="off" maxlength="6" placeholder="6 karakter"></label>
+   <div class="err" id="err"></div>
+   <button class="btn" id="startBtn" type="button">Mulai ujian</button>
+  </div>
+ </div>
+</section>
+
+<section id="exam" class="hide">
+ <header class="bar">
+  <div class="who"><span id="hNama"></span><small id="hInfo"></small></div>
+  <div class="timer" id="timer">90:00</div>
+ </header>
+ <div class="wrap">
+  <div class="qcard">
+   <div class="qno" id="qno"></div>
+   <div class="qtext" id="qtext"></div>
+   <div class="opts" id="opts"></div>
+   <div class="nav">
+    <button class="btn ghost" id="prev" type="button">Sebelumnya</button>
+    <button class="btn doubt" id="doubt" type="button">Ragu-ragu</button>
+    <span class="sp"></span>
+    <button class="btn" id="next" type="button">Selanjutnya</button>
+   </div>
+  </div>
+  <aside class="side">
+   <h3>Navigasi soal</h3>
+   <div class="grid" id="grid"></div>
+   <div class="legend">
+    <span><i style="background:var(--ok)"></i>Sudah dijawab</span>
+    <span><i style="background:var(--doubt)"></i>Ragu-ragu</span>
+    <span><i style="background:var(--none)"></i>Belum dijawab</span>
+   </div>
+   <button class="btn" style="width:100%" id="finish" type="button">Selesai ujian</button>
+  </aside>
+ </div>
+</section>
+
+<section id="result" class="hide"></section>
+
+<div class="modal hide" id="modal"><div class="mbox" id="mbox"></div></div>
+
+<script>
+const QS = [{"q": "Interaksi desa dan kota merupakan hubungan timbal balik yang terjadi karena adanya perbedaan potensi, kebutuhan, dan kondisi antara kedua wilayah. Faktor utama yang menyebabkan terjadinya interaksi tersebut adalah ....", "o": ["Kesamaan kondisi sosial masyarakat", "Perbedaan potensi dan kebutuhan wilayah", "Kesamaan mata pencaharian penduduk", "Perbedaan jumlah penduduk saja", "Kesamaan bentuk penggunaan lahan"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Perbedaan potensi dan kebutuhan wilayah."}, {"q": "Desa menghasilkan bahan pangan, sedangkan kota menyediakan barang industri dan jasa. Kondisi tersebut menunjukkan adanya ....", "o": ["Pemusatan penduduk", "Persaingan wilayah", "Saling melengkapi (complementarity)", "Pemisahan wilayah", "Urbanisasi permanen"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Saling melengkapi (complementarity)."}, {"q": "Menurut Edward Ullman, kesempatan antara (intervening opportunity) dapat mengurangi interaksi antarwilayah. Contohnya adalah ....", "o": ["Penduduk desa membeli barang di kota yang jauh", "Adanya kota lain yang menyediakan barang serupa lebih dekat sehingga mengurangi interaksi dengan kota tujuan semula", "Desa memiliki hasil pertanian melimpah", "Kota memiliki jumlah penduduk besar", "Jalan antara desa dan kota semakin baik"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Adanya kota lain yang menyediakan barang serupa lebih dekat sehingga mengurangi interaksi dengan kota tujuan semula."}, {"q": "Faktor yang menyebabkan interaksi antarwilayah semakin kuat apabila sarana transportasi semakin baik adalah ....", "o": ["Meningkatnya biaya perjalanan", "Berkurangnya mobilitas penduduk", "Menurunnya aksesibilitas wilayah", "Berkurangnya hambatan jarak dan waktu", "Terjadinya isolasi wilayah"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Berkurangnya hambatan jarak dan waktu."}, {"q": "Penduduk desa yang bekerja di kota setiap hari dan kembali ke desa pada sore hari disebut ....", "o": ["Migrasi permanen", "Transmigrasi", "Komuter", "Urbanisasi permanen", "Evakuasi"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Komuter."}, {"q": "Salah satu dampak positif interaksi desa dan kota bagi masyarakat desa adalah ....", "o": ["Hilangnya seluruh lahan pertanian", "Meningkatnya akses terhadap pendidikan dan teknologi", "Bertambahnya pengangguran", "Meningkatnya ketergantungan berlebihan terhadap kota", "Menurunnya produktivitas pertanian"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Meningkatnya akses terhadap pendidikan dan teknologi."}, {"q": "Perpindahan penduduk dari desa ke kota untuk mencari pekerjaan dan memperoleh kehidupan yang lebih baik disebut ....", "o": ["Ruralisasi", "Transmigrasi", "Remigrasi", "Urbanisasi", "Komuter"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Urbanisasi."}, {"q": "Dampak negatif urbanisasi bagi kota yang tidak diimbangi perencanaan adalah ....", "o": ["Bertambahnya tenaga kerja produktif", "Meningkatnya kegiatan ekonomi", "Berkembangnya pusat perdagangan", "Meningkatnya kepadatan penduduk dan permukiman kumuh", "Bertambahnya fasilitas pendidikan"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Meningkatnya kepadatan penduduk dan permukiman kumuh."}, {"q": "Desa yang sebagian besar penduduknya bekerja di sektor pertanian dan memiliki hubungan sosial yang erat disebut ....", "o": ["Desa swadaya", "Desa swakarya", "Desa swasembada", "Desa industri", "Desa metropolitan"], "k": "A", "p": "Jawaban yang tepat adalah opsi A: Desa swadaya."}, {"q": "Desa yang telah mengalami perkembangan, memiliki fasilitas cukup, dan mulai memanfaatkan teknologi dalam kegiatan ekonomi disebut ....", "o": ["Desa tertinggal", "Desa swadaya", "Desa swakarya", "Desa tradisional", "Desa terisolasi"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Desa swakarya."}, {"q": "Desa swasembada merupakan desa yang memiliki ciri ....", "o": ["Infrastruktur sangat terbatas", "Penduduk masih bergantung pada alam", "Tingkat perkembangan dan kemandirian tinggi", "Hubungan sosial sangat tertutup", "Kegiatan ekonomi hanya pertanian tradisional"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Tingkat perkembangan dan kemandirian tinggi."}, {"q": "Pola permukiman desa yang mengikuti aliran sungai, jalan raya, atau garis pantai disebut pola ....", "o": ["Memusat", "Menyebar", "Radial", "Linier", "Mengelompok acak"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Linier."}, {"q": "Pola permukiman desa yang rumah penduduknya terkonsentrasi pada satu lokasi biasanya ditemukan pada wilayah ....", "o": ["Dataran rendah yang luas", "Daerah pegunungan dengan lahan terbatas", "Daerah pertanian yang sangat luas", "Hutan yang tidak memiliki akses", "Perkebunan dengan rumah tersebar"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Daerah pegunungan dengan lahan terbatas."}, {"q": "Kota memiliki fungsi sebagai pusat pelayanan bagi wilayah sekitarnya. Fungsi tersebut ditunjukkan oleh kegiatan ....", "o": ["Produksi bahan pangan untuk kebutuhan sendiri", "Pelayanan pendidikan, kesehatan, perdagangan, dan pemerintahan", "Penggunaan lahan untuk pertanian tradisional", "Pengembangan permukiman tanpa fasilitas", "Pengurangan mobilitas penduduk"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Pelayanan pendidikan, kesehatan, perdagangan, dan pemerintahan."}, {"q": "Wilayah yang memiliki hubungan interaksi kuat dengan kota karena adanya arus barang, manusia, dan jasa disebut ....", "o": ["Wilayah formal", "Wilayah homogen", "Wilayah fungsional", "Wilayah administratif", "Wilayah konservasi"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Wilayah fungsional."}, {"q": "Wilayah yang memiliki kesamaan karakteristik tertentu, seperti iklim, bentuk lahan, atau penggunaan lahan, disebut ....", "o": ["Wilayah fungsional", "Wilayah nodal", "Wilayah homogen", "Wilayah administratif", "Wilayah interaksi"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Wilayah homogen."}, {"q": "Perwilayahan merupakan proses ....", "o": ["Menghapus batas administratif suatu wilayah", "Membagi wilayah berdasarkan karakteristik dan tujuan tertentu", "Memindahkan penduduk dari kota ke desa", "Mengubah seluruh lahan menjadi kawasan industri", "Menyamakan kondisi seluruh wilayah"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Membagi wilayah berdasarkan karakteristik dan tujuan tertentu."}, {"q": "Contoh wilayah formal adalah ....", "o": ["Wilayah pelayanan sebuah rumah sakit", "Wilayah pengaruh pusat perdagangan", "Wilayah dengan kesamaan jenis tanah", "Wilayah jangkauan transportasi kota", "Wilayah pemasaran sebuah perusahaan"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Wilayah dengan kesamaan jenis tanah."}, {"q": "Contoh wilayah fungsional adalah ....", "o": ["Wilayah dengan curah hujan tinggi", "Wilayah dengan jenis batuan yang sama", "Wilayah perkebunan teh", "Wilayah pelayanan transportasi suatu kota", "Wilayah dengan kesamaan vegetasi"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Wilayah pelayanan transportasi suatu kota."}, {"q": "Tujuan utama perwilayahan dalam pembangunan adalah ....", "o": ["Memusatkan pembangunan pada satu kota saja", "Mengurangi hubungan antarwilayah", "Mempermudah perencanaan dan pemerataan pembangunan", "Menghilangkan potensi ekonomi daerah", "Membatasi mobilitas penduduk"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Mempermudah perencanaan dan pemerataan pembangunan."}, {"q": "Wilayah memiliki sumber daya alam melimpah, tetapi akses jalan dan fasilitas pendidikan terbatas. Strategi pembangunan yang tepat adalah ....", "o": ["Mengembangkan wilayah tanpa memperhatikan lingkungan", "Meningkatkan infrastruktur dan kualitas sumber daya manusia", "Memindahkan seluruh penduduk ke kota", "Menghentikan kegiatan ekonomi wilayah", "Mengurangi fasilitas pelayanan masyarakat"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Meningkatkan infrastruktur dan kualitas sumber daya manusia."}, {"q": "Pusat pertumbuhan adalah wilayah yang ....", "o": ["Tidak memiliki kegiatan ekonomi", "Memiliki perkembangan ekonomi yang lambat", "Mendorong perkembangan wilayah sekitarnya", "Hanya berfungsi sebagai kawasan permukiman", "Tidak memiliki hubungan dengan wilayah lain"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Mendorong perkembangan wilayah sekitarnya."}, {"q": "Dampak positif pusat pertumbuhan terhadap wilayah sekitarnya adalah ....", "o": ["Menurunnya kesempatan kerja", "Meningkatnya aktivitas ekonomi dan pembangunan infrastruktur", "Berkurangnya aksesibilitas", "Menurunnya kegiatan perdagangan", "Terhambatnya distribusi barang"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Meningkatnya aktivitas ekonomi dan pembangunan infrastruktur."}, {"q": "Teori tempat sentral dikemukakan oleh ....", "o": ["Alfred Weber", "Walter Christaller", "August Lösch", "John Friedmann", "Ernest Burgess"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Walter Christaller."}, {"q": "Dalam teori tempat sentral, wilayah pelayanan suatu pusat kegiatan memiliki bentuk ideal ....", "o": ["Persegi", "Segitiga", "Lingkaran", "Heksagonal", "Persegi panjang"], "k": "D", "p": "Jawaban yang tepat adalah opsi D: Heksagonal."}, {"q": "Teori kutub pertumbuhan dikembangkan oleh ....", "o": ["Walter Christaller", "Alfred Weber", "François Perroux", "August Lösch", "Everett Lee"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: François Perroux."}, {"q": "Teori sektor perkembangan kota yang dikemukakan Homer Hoyt menjelaskan bahwa ....", "o": ["Kota berkembang dalam bentuk lingkaran konsentris", "Kota berkembang mengikuti sektor-sektor tertentu dari pusat kota", "Kota berkembang secara acak tanpa pola", "Kota hanya berkembang di sepanjang sungai", "Kota berkembang berdasarkan wilayah pertanian"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Kota berkembang mengikuti sektor-sektor tertentu dari pusat kota."}, {"q": "Menurut teori konsentris Ernest Burgess, zona di sekitar pusat kegiatan bisnis (CBD) yang mengalami perubahan penggunaan lahan dan kondisi permukiman disebut ....", "o": ["Zona permukiman kelas atas", "Zona komuter", "Zona peralihan", "Zona pertanian", "Zona industri terpadu"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Zona peralihan."}, {"q": "Pembangunan wilayah yang berkelanjutan harus memperhatikan ....", "o": ["Pertumbuhan ekonomi saja", "Kepentingan industri saja", "Keseimbangan ekonomi, sosial, dan lingkungan", "Peningkatan jumlah penduduk saja", "Pemanfaatan sumber daya tanpa batas"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Keseimbangan ekonomi, sosial, dan lingkungan."}, {"q": "Desa memasok hasil pertanian ke kota, sementara kota menyediakan barang industri dan jasa bagi desa. Hubungan ini menunjukkan konsep ....", "o": ["Konflik wilayah", "Saling melengkapi", "Isolasi wilayah", "Dominasi desa", "Persaingan tidak sehat"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Saling melengkapi (complementarity)."}, {"q": "Jika biaya dan waktu perjalanan antara dua wilayah semakin kecil, kemungkinan interaksi kedua wilayah akan ....", "o": ["Menurun", "Tetap", "Meningkat", "Terhenti", "Tidak terpengaruh"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Meningkat."}, {"q": "Salah satu ciri utama wilayah nodal atau fungsional adalah ....", "o": ["Kesamaan jenis tanah di seluruh wilayah", "Adanya pusat dan daerah yang terhubung oleh arus kegiatan", "Batas berdasarkan iklim semata", "Tidak ada hubungan antarbagian wilayah", "Kesamaan bahasa saja"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Adanya pusat dan daerah yang terhubung oleh arus kegiatan."}, {"q": "Contoh penerapan perwilayahan berdasarkan potensi ekonomi adalah ....", "o": ["Menetapkan kawasan pengembangan pertanian sesuai kesesuaian lahan", "Membagi wilayah berdasarkan warna peta", "Menetapkan batas wilayah berdasarkan jumlah kendaraan", "Memilih lokasi tanpa analisis", "Mengabaikan sumber daya setempat"], "k": "A", "p": "Jawaban yang tepat adalah opsi A: Menetapkan kawasan pengembangan pertanian sesuai kesesuaian lahan."}, {"q": "Pembangunan jalan penghubung desa-kota dapat meningkatkan interaksi karena ....", "o": ["Mengurangi akses ke pasar", "Meningkatkan hambatan transportasi", "Mempermudah pergerakan orang dan barang", "Membatasi pertukaran informasi", "Menurunkan mobilitas penduduk"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Mempermudah pergerakan orang dan barang."}, {"q": "Apabila pembangunan hanya terpusat pada kota besar, dampak yang mungkin terjadi adalah ....", "o": ["Pemerataan pembangunan otomatis", "Kesenjangan wilayah semakin besar", "Interaksi desa-kota berhenti", "Semua desa menjadi maju", "Kepadatan kota menurun drastis"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Kesenjangan wilayah semakin besar."}, {"q": "Strategi yang tepat untuk mengurangi arus urbanisasi berlebihan adalah ....", "o": ["Mengurangi fasilitas desa", "Meningkatkan kesempatan kerja dan layanan dasar di desa", "Menutup akses transportasi desa", "Melarang kegiatan ekonomi desa", "Memusatkan seluruh industri di kota"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Meningkatkan kesempatan kerja dan layanan dasar di desa."}, {"q": "Perkembangan pusat pertumbuhan dapat menimbulkan efek penyebaran (spread effect) apabila ....", "o": ["Manfaat ekonomi menjangkau wilayah sekitarnya", "Seluruh investasi hanya berada di pusat", "Wilayah sekitar kehilangan semua tenaga kerja", "Transportasi antardaerah ditutup", "Kegiatan ekonomi pusat menurun"], "k": "A", "p": "Jawaban yang tepat adalah opsi A: Manfaat ekonomi menjangkau wilayah sekitarnya."}, {"q": "Efek backwash dari pusat pertumbuhan terjadi ketika ....", "o": ["Pusat pertumbuhan mendorong kemajuan wilayah sekitar", "Sumber daya dan tenaga kerja wilayah sekitar tersedot ke pusat sehingga wilayah asal tertinggal", "Semua wilayah berkembang seimbang", "Pusat pertumbuhan tidak memiliki hubungan dengan wilayah lain", "Penduduk tidak melakukan mobilitas"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Sumber daya dan tenaga kerja wilayah sekitar tersedot ke pusat sehingga wilayah asal tertinggal."}, {"q": "Perencanaan wilayah yang baik seharusnya didasarkan pada ....", "o": ["Keinginan investor saja", "Data potensi, masalah, kebutuhan penduduk, dan daya dukung lingkungan", "Kebijakan tanpa kajian", "Kesamaan luas wilayah saja", "Pertumbuhan penduduk semata"], "k": "B", "p": "Jawaban yang tepat adalah opsi B: Data potensi, masalah, kebutuhan penduduk, dan daya dukung lingkungan."}, {"q": "Kawasan yang ditetapkan untuk melindungi ekosistem dan menjaga keberlanjutan sumber daya alam merupakan contoh perwilayahan berdasarkan fungsi ....", "o": ["Perdagangan", "Industri", "Konservasi", "Permukiman padat", "Transportasi"], "k": "C", "p": "Jawaban yang tepat adalah opsi C: Konservasi."}];
+const DURATION = 90*60;
+const $ = id => document.getElementById(id);
+const S = {order:[],ans:{},doubt:{},cur:0,left:DURATION,warned:false,viol:0,running:false,done:false,lastV:0,timer:null,user:{},token:''};
+
+function makeToken(){
+ const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let t='';
+ for(let i=0;i<6;i++)t+=c[Math.floor(Math.random()*c.length)];
+ S.token=t;$('tokenShow').textContent=t;
+}
+makeToken();
+$('newToken').onclick=makeToken;
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+
+function modal(html,cls){$('mbox').className='mbox '+(cls||'');$('mbox').innerHTML=html;$('modal').classList.remove('hide');}
+function closeModal(){$('modal').classList.add('hide');}
+
+$('startBtn').onclick=async()=>{
+ const u={nama:$('fNama').value.trim(),kelas:$('fKelas').value.trim(),no:$('fNo').value.trim(),sekolah:$('fSekolah').value.trim()};
+ if(!u.nama||!u.kelas||!u.no||!u.sekolah){$('err').textContent='Lengkapi nama, kelas, nomor peserta, dan asal sekolah.';return;}
+ if($('fToken').value.trim().toUpperCase()!==S.token){$('err').textContent='Token tidak cocok. Periksa kembali tokennya.';return;}
+ S.user=u;S.order=shuffle(QS.map((_,i)=>i));
+ try{await document.documentElement.requestFullscreen();}catch(e){}
+ $('login').classList.add('hide');$('exam').classList.remove('hide');
+ $('hNama').textContent=u.nama;$('hInfo').textContent=u.kelas+' · No. '+u.no+' · '+u.sekolah;
+ S.running=true;S.lastV=Date.now()+2000;
+ S.timer=setInterval(tick,1000);tick();render();
+};
+
+function tick(){
+ if(S.done)return;
+ const m=Math.floor(S.left/60),s=S.left%60;
+ $('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+ $('timer').classList.toggle('low',S.left<=300);
+ if(S.left<=0){finish('Waktu ujian habis.');return;}
+ S.left--;
+}
+
+function render(){
+ const q=QS[S.order[S.cur]],id=S.order[S.cur];
+ $('qno').textContent='Soal '+(S.cur+1)+' dari '+QS.length;
+ $('qtext').textContent=q.q;
+ $('opts').innerHTML=q.o.map((t,i)=>{const L='ABCDE'[i];return `<button class="opt ${S.ans[id]===L?'sel':''}" data-l="${L}" type="button"><span class="L">${L}</span><span>${esc(t)}</span></button>`;}).join('');
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{S.ans[id]=b.dataset.l;render();});
+ $('prev').disabled=S.cur===0;
+ $('next').textContent=S.cur===QS.length-1?'Periksa & selesai':'Selanjutnya';
+ $('doubt').classList.toggle('on',!!S.doubt[id]);
+ $('doubt').textContent=S.doubt[id]?'Batalkan ragu-ragu':'Ragu-ragu';
+ $('grid').innerHTML=S.order.map((qi,i)=>`<button class="n ${S.doubt[qi]?'d':S.ans[qi]?'a':''} ${i===S.cur?'cur':''}" data-i="${i}" type="button" aria-label="Soal ${i+1}">${i+1}</button>`).join('');
+ document.querySelectorAll('.n').forEach(b=>b.onclick=()=>{S.cur=+b.dataset.i;render();});
+}
+$('prev').onclick=()=>{if(S.cur>0){S.cur--;render();}};
+$('next').onclick=()=>{if(S.cur<QS.length-1){S.cur++;render();}else confirmFinish();};
+$('doubt').onclick=()=>{const id=S.order[S.cur];S.doubt[id]=!S.doubt[id];render();};
+$('finish').onclick=confirmFinish;
+
+function confirmFinish(){
+ const un=QS.length-Object.keys(S.ans).length,dc=Object.values(S.doubt).filter(Boolean).length;
+ modal(`<div class="ic">📝</div><h2>Akhiri ujian?</h2><p>Belum dijawab: <b>${un}</b> soal. Ragu-ragu: <b>${dc}</b> soal.<br>Jawaban tidak bisa diubah setelah ujian diakhiri.</p><div style="display:flex;gap:10px;justify-content:center"><button class="btn ghost" onclick="closeModal()">Kembali mengerjakan</button><button class="btn" onclick="closeModal();finish()">Ya, akhiri</button></div>`);
+}
+
+/* ===== Anti-curang ===== */
+function violation(why){
+ if(!S.running||S.done)return;
+ const now=Date.now();if(now-S.lastV<2000)return;S.lastV=now;S.viol++;
+ if(!S.warned){
+  S.warned=true;
+  modal(`<div class="ic">⚠️</div><h2>Peringatan kecurangan</h2><p>Terdeteksi: <b>${why}</b>.<br>Ini peringatan <b>pertama dan terakhir</b>. Jika terjadi lagi, ujian langsung dihentikan dan dinilai.</p><button class="btn" id="okWarn">Saya mengerti, lanjutkan</button>`,'warn');
+  $('okWarn').onclick=async()=>{closeModal();S.lastV=Date.now()+1500;try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();}catch(e){}};
+ }else{
+  finish('Ujian dihentikan karena pelanggaran kedua ('+why+').');
+ }
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)violation('berpindah tab atau jendela');});
+window.addEventListener('blur',()=>setTimeout(()=>{if(S.running&&!S.done&&(document.hidden||!document.hasFocus()))violation('membuka jendela atau aplikasi lain');},350));
+document.addEventListener('fullscreenchange',()=>{if(S.running&&!S.done&&!document.fullscreenElement)violation('keluar dari layar penuh');});
+['contextmenu','copy','cut','paste','dragstart'].forEach(e=>document.addEventListener(e,ev=>{if(S.running||ev.target.tagName!=='INPUT')ev.preventDefault();}));
+document.addEventListener('keydown',e=>{
+ if(!S.running)return;
+ const k=e.key.toLowerCase();
+ if(e.key==='F12'||e.key==='PrintScreen'||((e.ctrlKey||e.metaKey)&&['c','v','x','u','s','p','a'].includes(k))||((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','j','c'].includes(k))){e.preventDefault();}
+});
+window.addEventListener('beforeunload',e=>{if(S.running&&!S.done){e.preventDefault();e.returnValue='';}});
+
+/* ===== Hasil ===== */
+function finish(note){
+ if(S.done)return;S.done=true;S.running=false;clearInterval(S.timer);closeModal();
+ try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}
+ let ok=0;S.order.forEach(i=>{if(S.ans[i]===QS[i].k)ok++;});
+ const total=QS.length,answered=Object.keys(S.ans).length,score=Math.round(ok/total*1000)/10;
+ const u=S.user;
+ $('exam').classList.add('hide');$('result').classList.remove('hide');window.scrollTo(0,0);
+ $('result').innerHTML=`
+ <h2 style="margin:6px 0 14px">Hasil Ujian Akhir Semester Ganjil</h2>
+ ${note?`<div class="rev" style="border-left-color:var(--doubt)">${esc(note)}</div>`:''}
+ <div class="score"><div><div>Nilai akhir</div><div class="big">${score}</div></div>
+  <dl><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Kelas</dt><dd>${esc(u.kelas)}</dd><dt>No. peserta</dt><dd>${esc(u.no)}</dd><dt>Asal sekolah</dt><dd>${esc(u.sekolah)}</dd></dl></div>
+ <div class="stats"><div class="stat"><b style="color:var(--ok)">${ok}</b>Benar</div><div class="stat"><b style="color:var(--bad)">${answered-ok}</b>Salah</div><div class="stat"><b>${total-answered}</b>Tidak dijawab</div><div class="stat"><b>${S.viol}</b>Pelanggaran</div></div>
+ <button class="btn" id="printbtn" type="button" onclick="window.print()" style="margin-bottom:14px">Cetak hasil</button>
+ <h3 style="margin:10px 0 12px">Jawaban dan pembahasan</h3>
+ ${S.order.map((i,n)=>{const q=QS[i],a=S.ans[i],good=a===q.k;
+  const ot=L=>L?`${L}. ${esc(q.o['ABCDE'.indexOf(L)])}`:'Tidak dijawab';
+  return `<div class="rev ${good?'ok':''}"><h4><b>${n+1}.</b> ${esc(q.q)}</h4><div class="ans">
+  <div><span class="tag ${good?'ok':'bad'}">Jawabanmu</span>${ot(a)}</div>
+  ${good?'':`<div><span class="tag ok">Jawaban benar</span>${ot(q.k)}</div>`}</div>
+  <div class="pemb"><b>Pembahasan:</b> ${esc(q.p)}</div></div>`;}).join('')}`;
+}
+</script>
+</body>
+</html>
